@@ -4,10 +4,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.starhub</groupId>
-	<artifactId>StarHubTest</artifactId>
+	<artifactId>StarHub</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>StarHubTest</name>
+	<name>StarHub</name>
 
   	<properties>
 		<springframework.version>4.2.6.RELEASE</springframework.version>
@@ -143,12 +143,12 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>StarHubTest</warName>
+						<warName>StarHub</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>StarHubTest</finalName>
+		<finalName>StarHub</finalName>
 	</build>
 </project>

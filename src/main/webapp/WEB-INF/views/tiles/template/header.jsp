@@ -1,3 +1,3 @@
 <div>
-    	<h1>Tiles Header</h1>
+    	<h1>Header</h1>
 </div>
