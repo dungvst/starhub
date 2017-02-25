@@ -1,4 +1,3 @@
-	
 <div class="container">
 	<div id="logo" class="logo">
 		<a href="${pageContext.request.contextPath}/">
@@ -9,13 +8,13 @@
 		<nav class="main-nav">
 			<ul>
 				<li class="selected">
-					<a href="http://www.starhub.com/content/starhub/en/personal.html" class="default">Personal</a>
+					<a href="#" class="text-green">Personal</a>
 				</li>
 				<li>
-					<a href="http://www.starhub.com/content/starhub/en/business.html">Business</a>
+					<a href="#">Business</a>
 				</li>
 				<li>
-					<a href="http://www.starhub.com/content/starhub/en/about-us.html">About Us</a>
+					<a href="#">About Us</a>
 				</li>
 			</ul>
 		</nav>
