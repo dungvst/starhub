@@ -28,8 +28,8 @@ public class AppController {
         return "home";
     }
 
-    @RequestMapping(value = { "/admin" }, method = RequestMethod.GET)
-    public String adminPage(ModelMap model) {
-        return "admin";
+    @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+    public String login(ModelMap model) {
+        return "login";
     }
 }

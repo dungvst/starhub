@@ -7,9 +7,9 @@
    <definition name="base-definition" 
        template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
        <put-attribute name="title" value="" />  
-       <put-attribute name="header" value="/WEB-INF/views/tiles/template/header.jsp" />    
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />    
        <put-attribute name="body" value="" />  
-       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
    </definition>  
  
    <!-- Home Page -->
@@ -18,10 +18,39 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
    </definition> 
    
+    <!-- Login Page -->
+   <definition name="login" extends="base-definition">  
+       <put-attribute name="title" value="StarHub" />  
+       <put-attribute name="header" value="" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
+       <put-attribute name="footer" value="" />    
+   </definition> 
+   
+   
+   <!-- Admin page definition -->
+   <definition name="admin-definition" 
+       template="/WEB-INF/views/tiles/layouts/adminLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/adminHeader.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/adminMenu.jsp" />    
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/adminFooter.jsp" />  
+   </definition>  
+   
    <!-- Admin Page -->
-   <!-- <definition name="admin" extends="base-definition">  
+   <definition name="admin" extends="admin-definition">  
        <put-attribute name="title" value="Admin" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/admin.jsp" />  
-   </definition>  -->
+       <put-attribute name="body" value="/WEB-INF/views/pages/adminBanner.jsp" />  
+   </definition>
+   
+   <definition name="adminHeader" extends="admin-definition">  
+       <put-attribute name="title" value="Admin" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/adminHeader.jsp" />  
+   </definition>
+   
+   <definition name="adminTiles" extends="admin-definition">  
+       <put-attribute name="title" value="Admin" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/adminTiles.jsp" />  
+   </definition>
  
 </tiles-definitions>
