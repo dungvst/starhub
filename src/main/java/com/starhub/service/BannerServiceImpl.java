@@ -28,8 +28,8 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
-    public Banner findById(int id) {
-        return bannerDao.findById(id);
+    public Banner getDefaultBanner() {
+        return bannerDao.getDefaultBanner();
     }
 
 }

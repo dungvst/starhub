@@ -1,5 +1,5 @@
 package com.starhub.model;
-// Generated Feb 23, 2017 11:20:31 AM by Hibernate Tools 5.2.0.CR1
+// Generated Feb 25, 2017 11:11:29 PM by Hibernate Tools 5.2.0.CR1
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -16,27 +16,24 @@ import javax.persistence.Table;
 @Table(name = "banner", catalog = "starhub")
 public class Banner implements java.io.Serializable {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-
     private Integer id;
     private String title;
     private String description;
     private String ctaText;
     private String ctaLink;
     private String imageId;
+    private String status;
 
     public Banner() {
     }
 
-    public Banner(String title, String description, String ctaText, String ctaLink, String imageId) {
+    public Banner(String title, String description, String ctaText, String ctaLink, String imageId, String status) {
         this.title = title;
         this.description = description;
         this.ctaText = ctaText;
         this.ctaLink = ctaLink;
         this.imageId = imageId;
+        this.status = status;
     }
 
     @Id
@@ -94,6 +91,15 @@ public class Banner implements java.io.Serializable {
 
     public void setImageId(String imageId) {
         this.imageId = imageId;
+    }
+
+    @Column(name = "status", length = 5)
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

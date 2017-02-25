@@ -3,8 +3,11 @@
  */
 package com.starhub.dao;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import com.starhub.common.CommonConstant;
 import com.starhub.model.Banner;
 
 /**
@@ -21,8 +24,11 @@ public class BannerDaoImpl extends AbstractDAO<Integer, Banner> implements Banne
     }
 
     @Override
-    public Banner findById(int id) {
-        return getByKey(id);
+    public Banner getDefaultBanner() {
+        Criteria criteria = createEntityCriteria();
+        criteria.setMaxResults(1);
+        criteria.add(Restrictions.eq("status", CommonConstant.ACTIVE));
+        return (Banner) criteria.uniqueResult();
     }
 
 }

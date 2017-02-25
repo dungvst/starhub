@@ -12,5 +12,5 @@ import com.starhub.model.Banner;
 public interface BannerService {
     Banner updateBanner(Banner banner);
 
-    Banner findById(int id);
+    Banner getDefaultBanner();
 }

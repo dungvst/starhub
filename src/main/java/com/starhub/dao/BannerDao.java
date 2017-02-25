@@ -10,7 +10,8 @@ import com.starhub.model.Banner;
  *
  */
 public interface BannerDao {
+
     Banner updateBanner(Banner banner);
 
-    Banner findById(int id);
+    Banner getDefaultBanner();
 }

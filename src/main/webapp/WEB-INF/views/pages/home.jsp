@@ -60,14 +60,16 @@
 	<div class="container">
 		<div class="row">
 	        <div class="col-md-12 bannerTitle">
-                  <span>iPhone SE </span>
+                  <span>${banner.title}</span>
             </div>
               <div class="col-md-12">
                   <div id="bannerDes">
-                      <p>Get it today at $0 with 4G 4 and above plans.&nbsp;</p>
+                      <p>${banner.description}&nbsp;</p>
                   </div>
                   <div id="bannerCta">
-                      <a href="#" class="btn btn-sec btn-dark-grey text-dark-grey">Buy now   <img class="btn-arrow-black" src="static/img/btn-black-arrow.png"></a>
+                      <a href="${banner.ctaLink}" class="btn btn-sec btn-dark-grey text-dark-grey">${banner.ctaText}   
+                      	<img class="btn-arrow-black" src="static/img/btn-black-arrow.png">
+                      </a>
                   </div>
               </div> 
 		</div>
