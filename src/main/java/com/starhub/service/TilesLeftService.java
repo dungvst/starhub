@@ -11,7 +11,7 @@ import com.starhub.model.TilesLeft;
  */
 public interface TilesLeftService {
 
-    TilesLeft updateTilesLeft(TilesLeft tilesLeft);
+    void updateTilesLeft(TilesLeft tilesLeft);
 
     TilesLeft getDefaultTilesLeft();
 }

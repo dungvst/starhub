@@ -1,12 +1,27 @@
 package com.starhub.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.starhub.common.CommonConstant;
 import com.starhub.model.Banner;
+import com.starhub.model.HeaderSection;
+import com.starhub.model.TilesLeft;
+import com.starhub.model.TilesRight;
+import com.starhub.service.BannerService;
+import com.starhub.service.HeaderService;
+import com.starhub.service.TilesLeftService;
+import com.starhub.service.TilesRightService;
 
 /**
  * 
@@ -15,40 +30,160 @@ import com.starhub.model.Banner;
  */
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
+    @Autowired
+    private BannerService bannerService;
 
-    @RequestMapping(value = { "/" }, method = RequestMethod.GET)
-    public String homePage(ModelMap model) {
-        return "admin";
-    }
+    @Autowired
+    private HeaderService headerService;
 
-    @RequestMapping(value = { "/header" }, method = RequestMethod.GET)
-    public String adminPageHeader(ModelMap model) {
-        return "adminHeader";
-    }
+    @Autowired
+    private TilesLeftService tilesLeftService;
 
-    @RequestMapping(value = { "/tiles" }, method = RequestMethod.GET)
-    public String adminPageTiles(ModelMap model) {
-        return "adminTiles";
-    }
+    @Autowired
+    private TilesRightService tilesRightService;
 
-    @RequestMapping(value = "/banner", method = RequestMethod.GET)
-    public ModelAndView showUpdateBanner() {
+    @Autowired
+    MessageSource messageSource;
+
+    @RequestMapping(value = { "/admin", "/admin/banner" }, method = RequestMethod.GET)
+    public ModelAndView showAdminPage() {
         ModelAndView model = new ModelAndView();
-        Banner banner = new Banner();
-        // Banner banner = bannerService.getActiveItemById(id);
+        Banner banner = bannerService.getDefaultBanner();
         if (banner == null) {
             model.addObject("css", "danger");
-            model.addObject("msg", "Banner is not found");
+            model.addObject("msg", messageSource.getMessage("err.notfound", null, null));
         } else {
-            // BannerExt bannerExt =
-            // BannerExt.create(bannerService.getActiveItemById(id));
-            model.addObject("banner", banner);
-            model.addObject("isNew", false);
+            model.addObject("bannerForm", banner);
         }
         model.setViewName("admin");
         return model;
+    }
+
+    @RequestMapping(value = { "/admin/header" }, method = RequestMethod.GET)
+    public ModelAndView showAdminPageHeader() {
+        ModelAndView model = new ModelAndView();
+        HeaderSection headerSection = headerService.getDefaultHeaderSection();
+        if (headerSection == null) {
+            model.addObject("css", "danger");
+            model.addObject("msg", messageSource.getMessage("err.notfound", null, null));
+        } else {
+            model.addObject("headerForm", headerSection);
+        }
+        model.setViewName("adminHeader");
+        return model;
+    }
+
+    @RequestMapping(value = { "/admin/tiles-left" }, method = RequestMethod.GET)
+    public ModelAndView showAdminPageTilesLeft() {
+        ModelAndView model = new ModelAndView();
+        TilesLeft tilesLeft = tilesLeftService.getDefaultTilesLeft();
+        if (tilesLeft == null) {
+            model.addObject("css", "danger");
+            model.addObject("msg", messageSource.getMessage("err.notfound", null, null));
+        } else {
+            model.addObject("tilesLeftForm", tilesLeft);
+        }
+        model.setViewName("adminTilesLeft");
+        return model;
+    }
+
+    @RequestMapping(value = { "/admin/tiles-right" }, method = RequestMethod.GET)
+    public ModelAndView showAdminPageTilesRight() {
+        ModelAndView model = new ModelAndView();
+        TilesRight tilesRight = tilesRightService.getDefaultTilesRight();
+        if (tilesRight == null) {
+            model.addObject("css", "danger");
+            model.addObject("msg", messageSource.getMessage("err.notfound", null, null));
+        } else {
+            model.addObject("tilesRightForm", tilesRight);
+        }
+        model.setViewName("adminTilesRight");
+        return model;
+    }
+
+    @RequestMapping(value = "/admin/banner", method = RequestMethod.POST)
+    public String updateBanner(@ModelAttribute("bannerForm") @Valid Banner banner, BindingResult result, Model model,
+            final RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return "admin";
+        } else {
+            if (banner.getId() == null) {
+                redirectAttributes.addFlashAttribute("css", "danger");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("err.notfound", null, null));
+            } else {
+                redirectAttributes.addFlashAttribute("css", "success");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
+            }
+            banner.setStatus(CommonConstant.ACTIVE);
+            banner.setImageId("1");
+
+            bannerService.updateBanner(banner);
+            return "redirect:/admin/banner";
+        }
 
     }
+
+    @RequestMapping(value = "/admin/header", method = RequestMethod.POST)
+    public String updateHeader(@ModelAttribute("headerForm") @Valid HeaderSection header, BindingResult result, Model model,
+            final RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return "adminHeader";
+        } else {
+            if (header.getId() == null) {
+                redirectAttributes.addFlashAttribute("css", "danger");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("err.notfound", null, null));
+            } else {
+                redirectAttributes.addFlashAttribute("css", "success");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
+            }
+            header.setStatus(CommonConstant.ACTIVE);
+            headerService.updateHeaderSection(header);
+            return "redirect:/admin/header";
+        }
+
+    }
+
+    @RequestMapping(value = "/admin/tiles-left", method = RequestMethod.POST)
+    public String updateTilesLeft(@ModelAttribute("tilesLeftForm") @Valid TilesLeft tilesLeft, BindingResult result, Model model,
+            final RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return "adminTilesLeft";
+        } else {
+            if (tilesLeft.getId() == null) {
+                redirectAttributes.addFlashAttribute("css", "danger");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("err.notfound", null, null));
+            } else {
+                redirectAttributes.addFlashAttribute("css", "success");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
+            }
+            tilesLeft.setStatus(CommonConstant.ACTIVE);
+            tilesLeftService.updateTilesLeft(tilesLeft);
+
+            return "redirect:/admin/tiles-left";
+        }
+
+    }
+
+    @RequestMapping(value = "/admin/tiles-right", method = RequestMethod.POST)
+    public String updateTilesRight(@ModelAttribute("tilesRightForm") @Valid TilesRight tilesRight, BindingResult result, Model model,
+            final RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            return "adminTilesRight";
+        } else {
+            if (tilesRight.getId() == null) {
+                redirectAttributes.addFlashAttribute("css", "danger");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("err.notfound", null, null));
+            } else {
+                redirectAttributes.addFlashAttribute("css", "success");
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
+            }
+            tilesRight.setStatus(CommonConstant.ACTIVE);
+            tilesRightService.updateTilesRight(tilesRight);
+
+            return "redirect:/admin/tiles-right";
+        }
+
+    }
+
 }

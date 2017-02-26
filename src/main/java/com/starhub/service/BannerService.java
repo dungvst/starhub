@@ -10,7 +10,7 @@ import com.starhub.model.Banner;
  *
  */
 public interface BannerService {
-    Banner updateBanner(Banner banner);
+    void updateBanner(Banner banner);
 
     Banner getDefaultBanner();
 }

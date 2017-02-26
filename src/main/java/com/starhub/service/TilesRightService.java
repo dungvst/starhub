@@ -11,7 +11,7 @@ import com.starhub.model.TilesRight;
  */
 public interface TilesRightService {
 
-    TilesRight updateTilesRight(TilesRight tilesRight);
+    void updateTilesRight(TilesRight tilesRight);
 
     TilesRight getDefaultTilesRight();
 }

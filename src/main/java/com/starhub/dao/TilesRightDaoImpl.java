@@ -18,9 +18,8 @@ import com.starhub.model.TilesRight;
 public class TilesRightDaoImpl extends AbstractDAO<Integer, TilesRight> implements TilesRightDao {
 
     @Override
-    public TilesRight updateTilesRight(TilesRight tilesRight) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateTilesRight(TilesRight tilesRight) {
+        update(tilesRight);
     }
 
     @Override

@@ -11,7 +11,7 @@ import com.starhub.model.Banner;
  */
 public interface BannerDao {
 
-    Banner updateBanner(Banner banner);
+    void updateBanner(Banner banner);
 
     Banner getDefaultBanner();
 }

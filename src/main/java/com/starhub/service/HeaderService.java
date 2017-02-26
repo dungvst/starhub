@@ -9,7 +9,7 @@ import com.starhub.model.HeaderSection;
  */
 public interface HeaderService {
 
-    HeaderSection updateHeaderSection(HeaderSection headerSection);
+    void updateHeaderSection(HeaderSection headerSection);
 
     HeaderSection getDefaultHeaderSection();
 }

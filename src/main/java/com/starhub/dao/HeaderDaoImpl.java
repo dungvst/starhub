@@ -18,9 +18,8 @@ import com.starhub.model.HeaderSection;
 public class HeaderDaoImpl extends AbstractDAO<Integer, HeaderSection> implements HeaderDao {
 
     @Override
-    public HeaderSection updateHeaderSection(HeaderSection headerSection) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateHeaderSection(HeaderSection headerSection) {
+        update(headerSection);
     }
 
     @Override

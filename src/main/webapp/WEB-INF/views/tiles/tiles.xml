@@ -18,12 +18,17 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
    </definition> 
    
+   <!-- Base Definition -->
+   <definition name="login-definition" 
+       template="/WEB-INF/views/tiles/layouts/loginLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="body" value="" />  
+   </definition>  
+   
     <!-- Login Page -->
-   <definition name="login" extends="base-definition">  
+   <definition name="login" extends="login-definition">  
        <put-attribute name="title" value="StarHub" />  
-       <put-attribute name="header" value="" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
-       <put-attribute name="footer" value="" />    
    </definition> 
    
    
@@ -48,9 +53,14 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/adminHeader.jsp" />  
    </definition>
    
-   <definition name="adminTiles" extends="admin-definition">  
+   <definition name="adminTilesLeft" extends="admin-definition">  
        <put-attribute name="title" value="Admin" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/adminTiles.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/adminTilesLeft.jsp" />  
+   </definition>
+   
+   <definition name="adminTilesRight" extends="admin-definition">  
+       <put-attribute name="title" value="Admin" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/adminTilesRight.jsp" />  
    </definition>
  
 </tiles-definitions>

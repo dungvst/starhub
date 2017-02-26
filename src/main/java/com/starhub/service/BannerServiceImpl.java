@@ -22,9 +22,8 @@ public class BannerServiceImpl implements BannerService {
     private BannerDao bannerDao;
 
     @Override
-    public Banner updateBanner(Banner banner) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateBanner(Banner banner) {
+        bannerDao.updateBanner(banner);
     }
 
     @Override

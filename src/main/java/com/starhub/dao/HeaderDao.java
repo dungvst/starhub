@@ -11,7 +11,7 @@ import com.starhub.model.HeaderSection;
  */
 public interface HeaderDao {
 
-    HeaderSection updateHeaderSection(HeaderSection headerSection);
+    void updateHeaderSection(HeaderSection headerSection);
 
     HeaderSection getDefaultHeaderSection();
 }

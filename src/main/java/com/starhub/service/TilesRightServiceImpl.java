@@ -22,9 +22,8 @@ public class TilesRightServiceImpl implements TilesRightService {
     private TilesRightDao tilesRightDao;
 
     @Override
-    public TilesRight updateTilesRight(TilesRight tilesRight) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateTilesRight(TilesRight tilesRight) {
+        tilesRightDao.updateTilesRight(tilesRight);
     }
 
     @Override

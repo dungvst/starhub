@@ -1,5 +1,5 @@
 package com.starhub.model;
-// Generated Feb 25, 2017 11:11:29 PM by Hibernate Tools 5.2.0.CR1
+// Generated Feb 26, 2017 9:24:09 PM by Hibernate Tools 5.2.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +16,7 @@ public class User implements java.io.Serializable {
 
     private int id;
     private String userCode;
+    private String password;
     private String userName;
     private String userEmail;
     private String roleId;
@@ -29,9 +30,10 @@ public class User implements java.io.Serializable {
         this.userCode = userCode;
     }
 
-    public User(int id, String userCode, String userName, String userEmail, String roleId, String status) {
+    public User(int id, String userCode, String password, String userName, String userEmail, String roleId, String status) {
         this.id = id;
         this.userCode = userCode;
+        this.password = password;
         this.userName = userName;
         this.userEmail = userEmail;
         this.roleId = roleId;
@@ -56,6 +58,15 @@ public class User implements java.io.Serializable {
 
     public void setUserCode(String userCode) {
         this.userCode = userCode;
+    }
+
+    @Column(name = "password", length = 200)
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Column(name = "user_name", length = 200)

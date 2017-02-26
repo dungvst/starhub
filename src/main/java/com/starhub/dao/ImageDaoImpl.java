@@ -18,9 +18,8 @@ import com.starhub.model.Image;
 public class ImageDaoImpl extends AbstractDAO<Integer, Image> implements ImageDao {
 
     @Override
-    public Image updateImage(Image image) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateImage(Image image) {
+        update(image);
     }
 
     @Override

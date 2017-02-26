@@ -22,9 +22,8 @@ public class TilesLeftServiceImpl implements TilesLeftService {
     private TilesLeftDao tilesLeftDao;
 
     @Override
-    public TilesLeft updateTilesLeft(TilesLeft tilesLeft) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateTilesLeft(TilesLeft tilesLeft) {
+        tilesLeftDao.updateTilesLeft(tilesLeft);
     }
 
     @Override

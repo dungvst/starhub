@@ -22,9 +22,8 @@ public class ImageServiceImpl implements ImageService {
     private ImageDao imageDao;
 
     @Override
-    public Image updateImage(Image image) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateImage(Image image) {
+        imageDao.updateImage(image);
     }
 
     @Override

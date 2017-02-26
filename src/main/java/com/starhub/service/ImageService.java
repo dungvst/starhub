@@ -11,7 +11,7 @@ import com.starhub.model.Image;
  */
 public interface ImageService {
 
-    Image updateImage(Image image);
+    void updateImage(Image image);
 
     Image getDefaultImage();
 }

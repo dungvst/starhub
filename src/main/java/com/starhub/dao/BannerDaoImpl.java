@@ -18,9 +18,8 @@ import com.starhub.model.Banner;
 public class BannerDaoImpl extends AbstractDAO<Integer, Banner> implements BannerDao {
 
     @Override
-    public Banner updateBanner(Banner banner) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateBanner(Banner banner) {
+        update(banner);
     }
 
     @Override

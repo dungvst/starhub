@@ -32,9 +32,6 @@ public class AppController {
     @Autowired
     private TilesRightService tilesRightService;
 
-    // @Autowired
-    // private ImageService imageService;
-
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
 
@@ -51,10 +48,5 @@ public class AppController {
         model.addAttribute("tilesRight", tilesRightService.getDefaultTilesRight());
 
         return "home";
-    }
-
-    @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-    public String login(ModelMap model) {
-        return "login";
     }
 }

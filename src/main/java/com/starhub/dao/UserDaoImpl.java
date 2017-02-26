@@ -18,9 +18,8 @@ import com.starhub.model.User;
 public class UserDaoImpl extends AbstractDAO<Integer, User> implements UserDao {
 
     @Override
-    public User updateUser(User user) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateUser(User user) {
+        update(user);
     }
 
     @Override

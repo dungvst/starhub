@@ -11,7 +11,7 @@ import com.starhub.model.User;
  */
 public interface UserDao {
 
-    User updateUser(User user);
+    void updateUser(User user);
 
     User getDefaultUser();
 }

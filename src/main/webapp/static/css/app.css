@@ -1,7 +1,4 @@
-/* html{
-	background-color:#2F2F2F;
-}
- */
+
 body{
 	height: 100%;
 	background-color:rgb(245, 245, 245);
@@ -180,4 +177,8 @@ li.selected {
 }
 #tile-right-desc .product-name{
 	margin-bottom: 15px;
+}
+
+#outer-login{
+	padding:10% 30%;	
 }

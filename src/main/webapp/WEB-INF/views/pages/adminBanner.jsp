@@ -20,20 +20,15 @@
 		        <strong>${msg}</strong>
 		    </div>
 		</c:if>
-		<c:if test="${empty msg}">
-	    <spring:url value="/dashboard/banner/saveOrUpdate" var="saveOrUpdateUrl"/>
-	    <form:form class="form-horizontal" method="post" modelAttribute="banner" enctype="multipart/form-data"
-	               action="${saveOrUpdateUrl}">
-	
+	    <spring:url value="/admin/banner" var="updateUrl"/>
+	    <form:form class="form-horizontal" method="post" modelAttribute="bannerForm" action="${updateUrl}">
 	        <div class="box-body">
 	            <form:hidden path="id"/>
-	
 	            <spring:bind path="title">
 	                <div class="form-group ${status.error ? 'has-error' : ''}">
 	                    <label class="col-sm-2 control-label">Banner Title</label>
 	                    <div class="col-sm-10">
-	                        <form:input path="title" type="text" class="form-control "
-	                                    id="title" placeholder="Banner Title"/>
+	                        <form:input path="title" type="text" class="form-control " maxlength="200" required="required" />
 	                        <form:errors path="title" class="control-label"/>
 	                    </div>
 	                </div>
@@ -43,40 +38,35 @@
 	                <div class="form-group ${status.error ? 'has-error' : ''}">
 	                    <label class="col-sm-2 control-label">Description</label>
 	                    <div class="col-sm-10">
-	                        <form:input path="description" type="text" class="form-control "
-	                                    id="description" placeholder="Description"/>
+	                        <form:input path="description" type="text" class="form-control " maxlength="500" required="required" />
 	                        <form:errors path="description" class="control-label"/>
 	                    </div>
 	                </div>
 	            </spring:bind>
-	            <%-- <spring:bind path="bannerImagePath">
+	            
+	             <spring:bind path="ctaText">
 	                <div class="form-group ${status.error ? 'has-error' : ''}">
-	                    <label class="col-sm-2 control-label">Banner image</label>
+	                    <label class="col-sm-2 control-label">CTA Text</label>
 	                    <div class="col-sm-10">
-	                        <input type="file" name="bannerImage"/>
-	                        <form:errors path="bannerImagePath" class="control-label"/>
-	                        <div>
-	                            <c:url value="/dashboard/banner/get-image" var="uploadImageUrl">
-	                                <c:param name="imageStoredPath" value="${banner.bannerImagePath}"/>
-	                            </c:url>
-	                            <img src="${uploadImageUrl}" style="max-height: 100px;"/>
-	                        </div>
+	                        <form:input path="ctaText" type="text" class="form-control " maxlength="50" required="required" />
+	                        <form:errors path="ctaText" class="control-label"/>
 	                    </div>
 	                </div>
-	            </spring:bind> --%>
+	            </spring:bind>
+	            
+	             <spring:bind path="ctaLink">
+	                <div class="form-group ${status.error ? 'has-error' : ''}">
+	                    <label class="col-sm-2 control-label">CTA Link</label>
+	                    <div class="col-sm-10">
+	                        <form:input path="ctaLink" type="text" class="form-control " maxlength="200" required="required" />
+	                        <form:errors path="ctaLink" class="control-label"/>
+	                    </div>
+	                </div>
+	            </spring:bind>
 	        </div>
 	
 	        <div class="box-footer">
-	            <c:choose>
-	                <c:when test="${isNew}">
-	                    <button type="submit" class="btn btn-info pull-right">Add</button>
-	                </c:when>
-	                <c:otherwise>
-	                    <button type="submit" class="btn btn-info pull-right">Update</button>
-	                </c:otherwise>
-	            </c:choose>
+                   <button type="submit" class="btn btn-info pull-right">Update</button>
 	        </div>
-	
 	    </form:form>
-	</c:if>
 	</div>

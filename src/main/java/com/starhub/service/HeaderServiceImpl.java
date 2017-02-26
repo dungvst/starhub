@@ -22,9 +22,8 @@ public class HeaderServiceImpl implements HeaderService {
     private HeaderDao headerDao;
 
     @Override
-    public HeaderSection updateHeaderSection(HeaderSection headerSection) {
-        // TODO Auto-generated method stub
-        return null;
+    public void updateHeaderSection(HeaderSection headerSection) {
+        headerDao.updateHeaderSection(headerSection);
     }
 
     @Override
