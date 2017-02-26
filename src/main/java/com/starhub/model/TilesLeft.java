@@ -1,10 +1,11 @@
 package com.starhub.model;
 // Generated Feb 25, 2017 11:11:29 PM by Hibernate Tools 5.2.0.CR1
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -96,7 +97,7 @@ public class TilesLeft implements java.io.Serializable {
         this.subtitle3 = subtitle3;
     }
 
-    @Column(name = "description", length = 200)
+    @Column(name = "description", length = 500)
     public String getDescription() {
         return this.description;
     }

@@ -16,7 +16,7 @@
 		<div class="nav-tabs-track">
 			<ul class="nav nav-tabs multi-tabs with-highlight " data-tab-active="6">
 				<li class="item-1 active item-content">
-					<a href="#" title="Mobile">
+					<a href="${headerSection.mobileLink}" title="Mobile">
 						<div class="tab-img-bg" style="background-image: url('static/img/icon-store-mobile.png');"></div>
 						<div class="tab-copy">
 	                              Shop for 
@@ -25,7 +25,7 @@
 					</a>
 				</li>
 				<li class="item-2  item-content">
-					<a href="#" title="Broadband">
+					<a href="${headerSection.broadbandLink}" title="Broadband">
 						<div class="tab-img-bg" style="background-image: url('static/img/icon-store-broadband.png');"></div>
 						<div class="tab-copy">
 	                              Shop for 
@@ -34,7 +34,7 @@
 					</a>
 				</li>
 				<li class="item-3 item-content">
-					<a href="#" title="TV">
+					<a href="${headerSection.tvLink}" title="TV">
 						<div class="tab-img-bg" style="background-image: url('static/img/icon-store-tv.png');"></div>
 						<div class="tab-copy">
 	                              Shop for 
@@ -43,7 +43,7 @@
 					</a>
 				</li>
 				<li class="item-4 item-content">
-					<a href="#" title="Homehub">
+					<a href="${headerSection.homehubLink}" title="Homehub">
 						<div class="tab-img-bg" style="background-image: url('static/img/icon-store-hubbing.png');"></div>
 						<div class="tab-copy">
 	                              Shop for 
@@ -83,7 +83,7 @@
 				<div class="col-md-12 tileLeft">
 					<div class="col-md-6" id="tile-left-img">
 			            <a href="#" class="link-wrap">
-			                <img src="static/img/tileImage.png" alt="iPhone 7 Plus" onload="productImageLoaded()">
+			                <img src="static/img/tileImage.png" alt="iPhone 7 Plus">
 			            </a>
 					</div>
 					<div class="col-md-6" id="tile-left-desc">
@@ -91,31 +91,27 @@
 							<div class="inner-info">
 								<div class="info-basic">
 									<div class="product-name">
-										<span class="model-name">iPhone 7 Plus</span>
-										<div class="model-desc">128GB</div>
+										<span class="model-name">${tilesLeft.title}</span>
+										<div class="model-desc">${tilesLeft.subtitle}</div>
 									</div>
 								</div>
 								<div class="info-focus">
 									<div class="info-focus-inner">
 										<div class="product-price">
-											<small class="currency-symbol">$</small>
-											<span class="price">560</span>
+											<span class="price">${tilesLeft.subtitle2}</span>
 										</div>
 										<div class="notes">on 
-											<span class="blue product-highlight">4G 4</span>
+											<span class="blue product-highlight">${tilesLeft.subtitle3}</span>
 										</div>
 									</div>
-									<div class="info-promo-box-container">
-										<div class="product-promo-box">
-											<h5>Get 128GB for the price of 32GB</h5>
-											<p>Or, get a 256GB iPhone 7 for the price of 128GB</p>
-											<p class="grid-footer">Select 128GB or 256GB on checkout to enjoy offer. Applicable with sign-up to a 2-year 4G 4 or above plan. Price featured is after discount.</p>
-										</div>
+									<div id="left-desc">
+										<p>${tilesLeft.description}</p>
 									</div>
 								</div>
 							</div>
-							<a href="#" class="btn-secondaryGreen-rarrow btn-view-details" title="Buy Now">Buy Now
-								<span class="icon"></span>
+							
+							<a href="${tilesLeft.cta}" class="btn btn-success">
+								Buy Now >
 							</a>
 						</div>
 					</div>
@@ -125,31 +121,17 @@
 				<div class="col-md-12 tileRight">
 					<div id="tile-right-img">
 						<a href="#" class="link-wrap">
-							<img src="static/img/sim.png" alt="SIM Only Plans " onload="productImageLoaded()">
+							<img src="static/img/sim.png">
 						</a>
 					</div>
 					<div id="tile-right-desc">
-						<div class="inner">
-							<div class="inner-info">
-								<div class="info-basic">
-									<div class="product-name">
-										<span class="model-name">SIM Only Plans </span>
-										<div class="model-desc">Get the no contract, hassle-free and best value SIM Only plans. </div>
-									</div>
-								</div>
-								<div class="info-focus">
-									<div class="info-focus-inner">
-										<div class="product-price"></div>
-										<div class="notes">
-											<span class="blue product-highlight"></span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<a href="#" class="btn-secondaryGreen-rarrow btn-view-details" title="Buy Now">Buy Now
-								<span class="icon"></span>
-							</a>
+						<div class="product-name">
+							<span class="model-name">${tilesRight.title}</span>
+							<div class="model-desc">${tilesRight.subtitle}</div>
 						</div>
+						<a href="${tilesRight.cta}" class="btn btn-success">
+							Buy Now >
+						</a>
 					</div>
 				</div>
 			</div>
