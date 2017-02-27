@@ -7,7 +7,7 @@
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">
-             Update Right Tiles
+             Update Right Tile
         </h3>
     </div>
     </br>
@@ -21,9 +21,19 @@
 	    </div>
 	</c:if>
     <spring:url value="/admin/tiles-right" var="updateUrl"/>
-    <form:form class="form-horizontal" method="post" modelAttribute="tilesRightForm" action="${updateUrl}">
+    <form:form class="form-horizontal" method="post" modelAttribute="tilesRightForm" action="${updateUrl}"  enctype="multipart/form-data">
         <div class="box-body">
             <form:hidden path="id"/>
+            
+            <spring:bind path="imagePath">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <label class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+            </spring:bind>
+            
             <spring:bind path="title">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
                     <label class="col-sm-2 control-label">Title</label>

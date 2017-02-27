@@ -27,7 +27,7 @@
 	            
 	            <spring:bind path="imagePath">
 	                <div class="form-group ${status.error ? 'has-error' : ''}">
-	                    <label class="col-sm-2 control-label">Banner Image</label>
+	                    <label class="col-sm-2 control-label">Image</label>
 	                    <div class="col-sm-10">
 	                        <input type="file" name="file" />
 	                    </div>
@@ -36,7 +36,7 @@
 	            
 	            <spring:bind path="title">
 	                <div class="form-group ${status.error ? 'has-error' : ''}">
-	                    <label class="col-sm-2 control-label">Banner Title</label>
+	                    <label class="col-sm-2 control-label">Title</label>
 	                    <div class="col-sm-10">
 	                        <form:input path="title" type="text" class="form-control " maxlength="200" required="required" />
 	                        <form:errors path="title" class="control-label"/>

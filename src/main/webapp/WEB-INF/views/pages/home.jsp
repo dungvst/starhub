@@ -82,7 +82,7 @@
 				<div class="col-md-12 tileLeft">
 					<div class="col-md-6" id="tile-left-img">
 			            <a href="#" class="link-wrap">
-			                <img src="static/img/tileImage.png" alt="iPhone 7 Plus">
+			                <img src="${tilesLeft.imagePath}" alt="iPhone 7 Plus">
 			            </a>
 					</div>
 					<div class="col-md-6" id="tile-left-desc">
@@ -120,7 +120,7 @@
 				<div class="col-md-12 tileRight">
 					<div id="tile-right-img">
 						<a href="#" class="link-wrap">
-							<img src="static/img/sim.png">
+							<img src="${tilesRight.imagePath}">
 						</a>
 					</div>
 					<div id="tile-right-desc">

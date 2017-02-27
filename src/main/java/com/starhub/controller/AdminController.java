@@ -133,7 +133,7 @@ public class AdminController {
                     banner.setImagePath(CommonConstant.IMG_PATH + file.getOriginalFilename());
                 }
             } else {
-                banner.setImagePath(CommonConstant.DEFAULT_BANNER_PATH);
+                banner.setImagePath(CommonConstant.DEFAULT_BANNER_IMG_PATH);
             }
 
             bannerService.updateBanner(banner);
@@ -156,6 +156,7 @@ public class AdminController {
                 redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
             }
             header.setStatus(CommonConstant.ACTIVE);
+
             headerService.updateHeaderSection(header);
             return "redirect:/admin/header";
         }
@@ -164,7 +165,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/tiles-left", method = RequestMethod.POST)
     public String updateTilesLeft(@ModelAttribute("tilesLeftForm") @Valid TilesLeft tilesLeft, BindingResult result, Model model,
-            final RedirectAttributes redirectAttributes) {
+            final RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile file) {
         if (result.hasErrors()) {
             return "adminTilesLeft";
         } else {
@@ -175,7 +176,22 @@ public class AdminController {
                 redirectAttributes.addFlashAttribute("css", "success");
                 redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
             }
+
             tilesLeft.setStatus(CommonConstant.ACTIVE);
+
+            // Update image
+            if (!file.isEmpty()) {
+                String resultMsg = imageService.uploadImage(file);
+                if (resultMsg != null) {
+                    redirectAttributes.addFlashAttribute("css", "danger");
+                    redirectAttributes.addFlashAttribute("msg", messageSource.getMessage(resultMsg, null, null));
+                } else {
+                    tilesLeft.setImagePath(CommonConstant.IMG_PATH + file.getOriginalFilename());
+                }
+            } else {
+                tilesLeft.setImagePath(CommonConstant.DEFAULT_TILES_IMG_LEFT_PATH);
+            }
+
             tilesLeftService.updateTilesLeft(tilesLeft);
 
             return "redirect:/admin/tiles-left";
@@ -185,7 +201,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/tiles-right", method = RequestMethod.POST)
     public String updateTilesRight(@ModelAttribute("tilesRightForm") @Valid TilesRight tilesRight, BindingResult result, Model model,
-            final RedirectAttributes redirectAttributes) {
+            final RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile file) {
         if (result.hasErrors()) {
             return "adminTilesRight";
         } else {
@@ -197,6 +213,20 @@ public class AdminController {
                 redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
             }
             tilesRight.setStatus(CommonConstant.ACTIVE);
+
+            // Update image
+            if (!file.isEmpty()) {
+                String resultMsg = imageService.uploadImage(file);
+                if (resultMsg != null) {
+                    redirectAttributes.addFlashAttribute("css", "danger");
+                    redirectAttributes.addFlashAttribute("msg", messageSource.getMessage(resultMsg, null, null));
+                } else {
+                    tilesRight.setImagePath(CommonConstant.IMG_PATH + file.getOriginalFilename());
+                }
+            } else {
+                tilesRight.setImagePath(CommonConstant.DEFAULT_TILES_IMG_RIGHT_PATH);
+            }
+
             tilesRightService.updateTilesRight(tilesRight);
 
             return "redirect:/admin/tiles-right";

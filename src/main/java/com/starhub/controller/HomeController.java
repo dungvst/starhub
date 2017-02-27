@@ -19,7 +19,7 @@ import com.starhub.service.TilesRightService;
 
 @Controller
 @RequestMapping("/")
-public class AppController {
+public class HomeController {
     @Autowired
     private BannerService bannerService;
 

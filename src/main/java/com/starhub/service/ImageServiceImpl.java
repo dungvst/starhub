@@ -37,6 +37,7 @@ public class ImageServiceImpl implements ImageService {
                     Path path = Paths.get(rootPath + File.separator + CommonConstant.SERVER_IMG_FOLDER + file.getOriginalFilename());
                     Files.write(path, bytes);
                 } catch (IOException e) {
+                    e.printStackTrace();
                     return "err.upload";
                 }
             } else {
