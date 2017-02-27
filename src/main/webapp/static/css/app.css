@@ -153,8 +153,14 @@ li.selected {
 #tile-left-desc{
     margin-top: 20%;
 }
+
 #tile-right-img{
 	margin-top: 20%;
+}
+
+#tile-right-img img {
+    height: 250px;
+    width: 250px;
 }
 
 .model-name{
