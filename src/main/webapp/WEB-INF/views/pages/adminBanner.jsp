@@ -21,9 +21,19 @@
 		    </div>
 		</c:if>
 	    <spring:url value="/admin/banner" var="updateUrl"/>
-	    <form:form class="form-horizontal" method="post" modelAttribute="bannerForm" action="${updateUrl}">
+	    <form:form class="form-horizontal" method="post" modelAttribute="bannerForm" action="${updateUrl}" enctype="multipart/form-data">
 	        <div class="box-body">
 	            <form:hidden path="id"/>
+	            
+	            <spring:bind path="imagePath">
+	                <div class="form-group ${status.error ? 'has-error' : ''}">
+	                    <label class="col-sm-2 control-label">Banner Image</label>
+	                    <div class="col-sm-10">
+	                        <input type="file" name="file" />
+	                    </div>
+	                </div>
+	            </spring:bind>
+	            
 	            <spring:bind path="title">
 	                <div class="form-group ${status.error ? 'has-error' : ''}">
 	                    <label class="col-sm-2 control-label">Banner Title</label>

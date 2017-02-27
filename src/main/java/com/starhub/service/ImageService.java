@@ -3,15 +3,12 @@
  */
 package com.starhub.service;
 
-import com.starhub.model.Image;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author DungNV
  *
  */
 public interface ImageService {
-
-    void updateImage(Image image);
-
-    Image getDefaultImage();
+    String uploadImage(MultipartFile file);
 }

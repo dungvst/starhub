@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-
 <div class ="headerSection">
 	<div class="container">
 		<ul class="breadcrumb">	
@@ -56,7 +55,7 @@
 	</div>
 </div>
 
-<div class = "mainBanner">
+<div class = "mainBanner" style="background-image: url('${banner.imagePath}');">
 	<div class="container">
 		<div class="row">
 	        <div class="col-md-12 bannerTitle">

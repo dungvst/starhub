@@ -94,7 +94,7 @@ li.selected {
 .mainBanner{
 	position: relative;
 	margin-top:25px;
-	background-image: url('../img/main-banner.png'); 
+	/* background-image: url('../img/main-banner.png');  */
 	height: 400px;
     width: 100%;
 	background-position: center center;

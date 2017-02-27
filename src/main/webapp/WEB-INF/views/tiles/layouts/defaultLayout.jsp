@@ -9,6 +9,7 @@
 		<title><tiles:getAsString name="title" /></title>
 		<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
 		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+		<script src="<c:url value="/static/js/jquery-3.1.1.min.js" />"></script>
 	</head>
 	 
 	<body>

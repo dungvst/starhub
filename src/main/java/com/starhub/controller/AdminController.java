@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,6 +22,7 @@ import com.starhub.model.TilesLeft;
 import com.starhub.model.TilesRight;
 import com.starhub.service.BannerService;
 import com.starhub.service.HeaderService;
+import com.starhub.service.ImageService;
 import com.starhub.service.TilesLeftService;
 import com.starhub.service.TilesRightService;
 
@@ -42,6 +45,9 @@ public class AdminController {
 
     @Autowired
     private TilesRightService tilesRightService;
+
+    @Autowired
+    private ImageService imageService;
 
     @Autowired
     MessageSource messageSource;
@@ -104,7 +110,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/banner", method = RequestMethod.POST)
     public String updateBanner(@ModelAttribute("bannerForm") @Valid Banner banner, BindingResult result, Model model,
-            final RedirectAttributes redirectAttributes) {
+            final RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile file) {
         if (result.hasErrors()) {
             return "admin";
         } else {
@@ -116,7 +122,19 @@ public class AdminController {
                 redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("msg.update.success", null, null));
             }
             banner.setStatus(CommonConstant.ACTIVE);
-            banner.setImageId("1");
+
+            // Update image
+            if (!file.isEmpty()) {
+                String resultMsg = imageService.uploadImage(file);
+                if (resultMsg != null) {
+                    redirectAttributes.addFlashAttribute("css", "danger");
+                    redirectAttributes.addFlashAttribute("msg", messageSource.getMessage(resultMsg, null, null));
+                } else {
+                    banner.setImagePath(CommonConstant.IMG_PATH + file.getOriginalFilename());
+                }
+            } else {
+                banner.setImagePath(CommonConstant.DEFAULT_BANNER_PATH);
+            }
 
             bannerService.updateBanner(banner);
             return "redirect:/admin/banner";
